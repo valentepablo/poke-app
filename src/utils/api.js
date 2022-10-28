@@ -1,6 +1,6 @@
-const getPokemons = async (limit = 18, offset = 0) => {
+const getPokemons = async (offset = 0) => {
   const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
+    `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=12`
   );
   const data = await response.json();
   return data;

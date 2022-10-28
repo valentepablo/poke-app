@@ -6,6 +6,7 @@
 
 :root {
   font-family: "Press Start 2P", cursive;
+  scroll-behavior: smooth;
 }
 
 .special-border {

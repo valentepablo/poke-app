@@ -15,7 +15,7 @@ const PokemonCard = ({ pokemon }) => {
         {pokemon.types.map((type) => (
           <p
             key={`${pokemon.name}-${type.type.name}`}
-            className="inline text-xs capitalize text-zinc-500"
+            className="inline-block text-xs capitalize text-zinc-500"
           >
             {type.type.name}
           </p>
