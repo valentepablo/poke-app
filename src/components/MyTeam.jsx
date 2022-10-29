@@ -7,18 +7,24 @@ const MyTeam = () => {
   const { myTeam } = useContext(TeamContext);
 
   return (
-    <div className="mt-20 mb-4 py-2">
-      <p className="mb-4 px-4 text-sm">Recruits: {myTeam.length} / 5</p>
-      <div className="mx-auto max-w-5xl space-y-2">
+    <div className="mt-20 mb-4 py-2 md:mx-auto md:max-w-5xl">
+      <p className="mb-4 px-4 text-sm md:mt-4 md:text-center md:text-base">
+        Recruits: {myTeam.length} / 6
+      </p>
+      <div className="mx-auto max-w-5xl space-y-2 md:grid md:grid-cols-2 md:space-y-8">
         {myTeam.map((pokemon) => (
-          <div key={pokemon.id} className="flex items-center gap-4 pl-4">
+          <div key={pokemon.id} className="flex items-center gap-6 pl-4">
             <div>
-              <img src={pokemon.image} alt={pokemon.name} />
+              <img
+                src={pokemon.image}
+                alt={pokemon.name}
+                className="md:h-44 md:w-44"
+              />
             </div>
             <div>
-              <p className=" uppercase">{pokemon.name}</p>
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1">
+              <p className="uppercase md:text-lg">{pokemon.name}</p>
+              <div className="flex items-center gap-3 md:mt-2">
+                <div className="flex items-center gap-1 ">
                   <AiFillHeart className="h-5 w-5 text-green-700" />
                   <p className="text-sm">{pokemon.stats.hp}</p>
                 </div>
@@ -27,7 +33,7 @@ const MyTeam = () => {
                   <p className="text-sm">{pokemon.stats.dmg}</p>
                 </div>
               </div>
-              <div className="space-x-4">
+              <div className="space-x-4 md:mt-2">
                 {pokemon.type.map((type) => (
                   <p
                     key={`${pokemon.id}-${type}`}

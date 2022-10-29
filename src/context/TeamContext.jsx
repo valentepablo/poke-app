@@ -14,7 +14,7 @@ const TeamProvider = ({ children }) => {
   };
 
   const recruitPokemon = (pokemon) => {
-    if (myTeam.length >= 5) return;
+    if (myTeam.length >= 6) return;
     if (checkDuplicates(pokemon)) return;
     const newRecruit = {
       name: pokemon.name,
