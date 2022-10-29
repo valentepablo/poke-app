@@ -37,6 +37,7 @@ function App() {
               path="/"
               element={
                 <PokemonList
+                  loading={loading}
                   page={page}
                   setPage={setPage}
                   pokemons={pokemons}

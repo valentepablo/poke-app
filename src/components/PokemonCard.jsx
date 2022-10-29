@@ -2,6 +2,7 @@ import { useContext } from "react";
 import TeamContext from "../context/TeamContext";
 import { AiFillHeart } from "react-icons/ai";
 import { RiSwordFill } from "react-icons/ri";
+import TypeIcon from "./TypeIcon";
 
 const PokemonCard = ({ pokemon }) => {
   const { recruitPokemon } = useContext(TeamContext);
@@ -24,12 +25,12 @@ const PokemonCard = ({ pokemon }) => {
         <p className="text-lg">{pokemon.name}</p>
         <div className="space-x-4">
           {pokemon.types.map((type) => (
-            <p
+            <div
               key={`${pokemon.name}-${type.type.name}`}
-              className="inline-block text-xs capitalize text-zinc-500"
+              className="inline-flex items-center gap-1 text-xs text-zinc-500"
             >
-              {type.type.name}
-            </p>
+              <TypeIcon type={type.type.name} size="5" />
+            </div>
           ))}
         </div>
       </div>
