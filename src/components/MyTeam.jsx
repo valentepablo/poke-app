@@ -3,16 +3,17 @@ import TeamContext from "../context/TeamContext";
 import { RiSwordFill } from "react-icons/ri";
 import { AiFillHeart } from "react-icons/ai";
 import TypeIcon from "./TypeIcon";
+import Button from "./Button";
 
 const MyTeam = () => {
-  const { myTeam } = useContext(TeamContext);
+  const { myTeam, removePokemon } = useContext(TeamContext);
 
   return (
-    <div className="mt-20 mb-4 py-2 md:mx-auto md:max-w-5xl">
+    <div className="mx-auto mt-20 mb-4 py-2 md:max-w-5xl">
       <p className="mb-4 px-4 text-sm md:mt-4 md:text-center md:text-base">
         Recruits: {myTeam.length} / 6
       </p>
-      <div className="mx-auto max-w-5xl space-y-3 px-2 md:mt-12 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
+      <div className="grid place-items-center gap-4 px-2 md:mt-12 md:grid-cols-2 md:gap-8">
         {myTeam.map((pokemon) => (
           <div
             key={pokemon.id}
@@ -48,6 +49,12 @@ const MyTeam = () => {
                 </div>
               </div>
             </div>
+            <button
+              onClick={() => removePokemon(pokemon)}
+              className="self-start pr-2 pt-1 text-lg md:text-2xl"
+            >
+              &times;
+            </button>
           </div>
         ))}
       </div>

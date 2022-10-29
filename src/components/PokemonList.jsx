@@ -1,4 +1,4 @@
-import DuplicateModal from "./DuplicateModal";
+import Modal from "./Modal";
 import Pagination from "./Pagination";
 import PokemonCard from "./PokemonCard";
 
@@ -12,7 +12,7 @@ const PokemonList = ({ pokemons, page, setPage, loading }) => {
               return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
             })}
       </div>
-      <DuplicateModal />
+      <Modal />
       <Pagination page={page} setPage={setPage} />
     </div>
   );

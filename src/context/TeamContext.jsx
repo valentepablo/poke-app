@@ -13,9 +13,16 @@ const TeamProvider = ({ children }) => {
     }
   };
 
+  const checkTeamLength = () => {
+    if (myTeam.length >= 6) {
+      setOpenModal(true);
+      return true;
+    }
+  };
+
   const recruitPokemon = (pokemon) => {
-    if (myTeam.length >= 6) return;
     if (checkDuplicates(pokemon)) return;
+    if (checkTeamLength()) return;
     const newRecruit = {
       name: pokemon.name,
       id: pokemon.id,
@@ -30,7 +37,21 @@ const TeamProvider = ({ children }) => {
     setMyTeam([...myTeam, newRecruit]);
   };
 
-  const data = { myTeam, setMyTeam, recruitPokemon, openModal, setOpenModal };
+  const removePokemon = (pokemon) => {
+    const copy = [...myTeam];
+    const filtered = copy.filter((item) => item.id !== pokemon.id);
+
+    setMyTeam(filtered);
+  };
+
+  const data = {
+    myTeam,
+    setMyTeam,
+    recruitPokemon,
+    openModal,
+    setOpenModal,
+    removePokemon,
+  };
   return <TeamContext.Provider value={data}>{children}</TeamContext.Provider>;
 };
 
