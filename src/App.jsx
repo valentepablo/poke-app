@@ -34,7 +34,7 @@ function App() {
           <Routes>
             <Route path="/myteam" element={<MyTeam />} />
             <Route
-              path="/pokemons"
+              path="/"
               element={
                 <PokemonList
                   page={page}
