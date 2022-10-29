@@ -1,4 +1,15 @@
+import { useContext } from "react";
+import TeamContext from "../context/TeamContext";
+import { AiFillHeart } from "react-icons/ai";
+import { RiSwordFill } from "react-icons/ri";
+
 const PokemonCard = ({ pokemon }) => {
+  const { recruitPokemon } = useContext(TeamContext);
+
+  const handleOnClick = () => {
+    recruitPokemon(pokemon);
+  };
+
   return (
     <div key={pokemon.id}>
       <div className="special-border mx-auto border-y-4 border-zinc-900">
@@ -9,31 +20,38 @@ const PokemonCard = ({ pokemon }) => {
         />
       </div>
 
-      <div className="mt-2 font-bold capitalize">{pokemon.name}</div>
-      <div className="space-x-2">
-        <p className="inline text-sm">Type:</p>
-        {pokemon.types.map((type) => (
-          <p
-            key={`${pokemon.name}-${type.type.name}`}
-            className="inline-block text-xs capitalize text-zinc-500"
-          >
-            {type.type.name}
-          </p>
-        ))}
-      </div>
-      <div>
-        <p className="inline text-sm">HP:</p>
-        <div className="inline text-sm text-zinc-500">
-          {pokemon.stats[0].base_stat}
+      <div className="mt-2 font-bold capitalize">
+        <p className="text-lg">{pokemon.name}</p>
+        <div className="space-x-4">
+          {pokemon.types.map((type) => (
+            <p
+              key={`${pokemon.name}-${type.type.name}`}
+              className="inline-block text-xs capitalize text-zinc-500"
+            >
+              {type.type.name}
+            </p>
+          ))}
         </div>
       </div>
-      <div>
-        <p className="inline text-sm">DMG:</p>
-        <div className="inline text-sm text-zinc-500">
-          {pokemon.stats[1].base_stat}
+
+      <div className="mt-3 flex items-center gap-6">
+        <div className="flex items-center gap-1">
+          <AiFillHeart className="h-5 w-5 text-green-700" />
+          <div className="inline text-zinc-500">
+            {pokemon.stats[0].base_stat}
+          </div>
+        </div>
+        <div className="flex items-center gap-1">
+          <RiSwordFill className="h-5 w-5 text-red-700" />
+          <div className="inline text-zinc-500">
+            {pokemon.stats[1].base_stat}
+          </div>
         </div>
       </div>
-      <button className="push-button mx-auto mt-4 block border-y-4 border-zinc-900 py-2 text-sm">
+      <button
+        onClick={handleOnClick}
+        className="push-button width-calc mx-auto mt-4 block border-y-4 border-zinc-900 py-2 text-sm active:translate-y-1"
+      >
         Recruit
       </button>
     </div>
