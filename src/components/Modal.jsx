@@ -20,7 +20,7 @@ const Modal = () => {
   return (
     <dialog
       ref={dialogRef}
-      className="dialog-border max-w-2xl border-4 border-zinc-900 p-8"
+      className="dialog-border mx-4 max-w-2xl border-4 border-zinc-900 p-8 text-center md:mx-auto"
     >
       {myTeam.length >= 6 ? (
         <p>

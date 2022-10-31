@@ -3,7 +3,6 @@ import TeamContext from "../context/TeamContext";
 import { RiSwordFill } from "react-icons/ri";
 import { AiFillHeart } from "react-icons/ai";
 import TypeIcon from "./TypeIcon";
-import Button from "./Button";
 
 const MyTeam = () => {
   const { myTeam, removePokemon } = useContext(TeamContext);
