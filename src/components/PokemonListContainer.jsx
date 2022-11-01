@@ -25,16 +25,18 @@ const PokemonListContainer = () => {
   };
 
   const fetchPokemonsByType = async () => {
-    if (pokemonCategory !== "---") {
-      // const pokemonsasd = await getPokemonsByType(pokemonCategory);
-      // console.log(pokemons);
+    setLoading(true);
+    if (pokemonCategory === "all") {
+      fetchPokemons();
+    } else {
+      const pokemons = await getPokemonsByType(pokemonCategory);
+      const promises = pokemons.pokemon.map(
+        async (pokemon) => await getPokemonData(pokemon.pokemon.url)
+      );
+      const results = await Promise.all(promises);
+      setPokemons(results);
     }
-
-    // const promises = pokemons.results.map(
-    //   async (pokemon) => await getPokemonData(pokemon.url)
-    // );
-
-    // const results = await Promise.all(promises);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -67,7 +69,10 @@ const PokemonListContainer = () => {
 
   return (
     <>
-      <Filters fetchPokemons={fetchPokemons} />
+      <Filters
+        fetchPokemons={fetchPokemons}
+        setPokemonNotFound={setPokemonNotFound}
+      />
 
       <div className="mb-8 p-2">
         <PokemonList
@@ -76,7 +81,9 @@ const PokemonListContainer = () => {
           pokemonNotFound={pokemonNotFound}
         />
         <Modal />
-        {!pokemonNotFound && <Pagination page={page} setPage={setPage} />}
+        {pokemons.length > 1 && !loading && (
+          <Pagination page={page} setPage={setPage} />
+        )}
       </div>
     </>
   );

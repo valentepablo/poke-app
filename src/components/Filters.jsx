@@ -4,13 +4,13 @@ import { FaSearch } from "react-icons/fa";
 import Button from "./Button";
 import SelectPokemonType from "./SelectPokemonType";
 
-const Filters = ({ fetchPokemons }) => {
+const Filters = ({ fetchPokemons, setPokemonNotFound, pokemonCategoryAll }) => {
   const { openFilters, setPokemonName } = useContext(FilterContext);
   const pokemonNameRef = useRef();
 
   const handleOnChange = () => {
     if (pokemonNameRef.current.value === "") {
-      console.log(pokemonNameRef.current.value);
+      setPokemonNotFound(false);
       fetchPokemons();
     }
   };

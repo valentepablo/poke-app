@@ -7,13 +7,15 @@ const PokemonList = ({ pokemons, loading, pokemonNotFound }) => {
         pokemonNotFound && "text-center md:grid-cols-1"
       }`}
     >
-      {loading
-        ? "Loading Pokemons..."
-        : pokemonNotFound
-        ? "Pokemon no encontrado"
-        : pokemons.map((pokemon) => {
-            return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
-          })}
+      {loading ? (
+        <p className="md:col-span-3 md:text-center">"Loading Pokemons..."</p>
+      ) : pokemonNotFound ? (
+        "Pokemon no encontrado"
+      ) : (
+        pokemons.map((pokemon) => {
+          return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
+        })
+      )}
     </div>
   );
 };

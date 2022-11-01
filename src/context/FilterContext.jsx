@@ -5,7 +5,7 @@ const FilterContext = createContext();
 const FilterProvider = ({ children }) => {
   const [openFilters, setOpenFilters] = useState(false);
   const [pokemonName, setPokemonName] = useState("");
-  const [pokemonCategory, setPokemonCategory] = useState("");
+  const [pokemonCategory, setPokemonCategory] = useState("all");
 
   const data = {
     openFilters,
