@@ -67,3 +67,9 @@
 .dialog-border::backdrop {
   background: rgb(0 0 0 / 0.45);
 }
+
+.input-reset-style {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

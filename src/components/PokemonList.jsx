@@ -8,9 +8,9 @@ const PokemonList = ({ pokemons, loading, pokemonNotFound }) => {
       }`}
     >
       {loading ? (
-        <p className="md:col-span-3 md:text-center">"Loading Pokemons..."</p>
+        <p className="md:col-span-3 md:text-center">Loading Pokemons...</p>
       ) : pokemonNotFound ? (
-        "Pokemon no encontrado"
+        "Pokemon not found."
       ) : (
         pokemons.map((pokemon) => {
           return <PokemonCard key={pokemon.id} pokemon={pokemon} />;

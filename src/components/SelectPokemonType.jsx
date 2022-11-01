@@ -8,7 +8,7 @@ const SelectPokemonType = () => {
     <select
       value={pokemonCategory}
       onChange={(e) => setPokemonCategory(e.target.value)}
-      className="w-full border-4 border-zinc-900 py-1.5 px-2 text-sm capitalize focus:outline-none"
+      className="input-reset-style w-full border-4 border-zinc-900 py-1.5 px-2 text-sm capitalize focus:outline-none"
     >
       <option value="all">All</option>
       {types.map((type) => {

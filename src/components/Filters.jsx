@@ -26,12 +26,12 @@ const Filters = ({ fetchPokemons, setPokemonNotFound, pokemonCategoryAll }) => {
             onChange={handleOnChange}
             onKeyDown={(e) => {
               if (e.key === "Enter")
-                setPokemonName(pokemonNameRef.current.value);
+                setPokemonName(pokemonNameRef.current.value.toLowerCase());
             }}
             ref={pokemonNameRef}
             type="search"
             placeholder="Pokemon name..."
-            className="w-full border-4 border-zinc-900 py-1 px-2 placeholder:text-sm focus:outline-none"
+            className="input-reset-style w-full border-4 border-zinc-900 py-1 px-2 placeholder:text-sm focus:outline-none"
           />
           <Button
             text={<FaSearch />}
