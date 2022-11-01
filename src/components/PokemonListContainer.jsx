@@ -50,22 +50,24 @@ const PokemonListContainer = () => {
   useEffect(() => {
     const fetchByName = async () => {
       setLoading(true);
-      if (pokemonName !== "") {
-        let url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
-        const result = await getPokemonData(url);
-        setLoading(false);
 
-        if (result.hasOwnProperty("message")) {
-          setPokemonNotFound(true);
-        } else {
-          setPokemonNotFound(false);
-          setPokemons([result]);
-        }
+      let url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+      const result = await getPokemonData(url);
+      setLoading(false);
+
+      if (result.hasOwnProperty("message")) {
+        setPokemonNotFound(true);
+        setPokemons([]);
+      } else {
+        setPokemonNotFound(false);
+        setPokemons([result]);
       }
     };
 
     if (pokemonName.length > 0) fetchByName();
   }, [pokemonName]);
+
+  console.log(pokemons);
 
   return (
     <>
