@@ -36,7 +36,7 @@ const Filters = ({ fetchPokemons, setPokemonNotFound, pokemonCategoryAll }) => {
           <Button
             text={<FaSearch />}
             onClick={() => {
-              setPokemonName(pokemonNameRef.current.value);
+              setPokemonName(pokemonNameRef.current.value.toLowerCase());
             }}
           />
         </div>
